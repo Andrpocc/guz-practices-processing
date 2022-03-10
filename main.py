@@ -1,5 +1,6 @@
 import os.path
 import traceback
+
 from time import sleep
 
 from colorama import init, Fore, Style
@@ -13,7 +14,8 @@ def print_head() -> None:
     figlet = Figlet(font="speed")
     banner = figlet.renderText("Fast practice")
     print(f"{Style.BRIGHT}{Fore.MAGENTA}{banner}")
-    print("by Pochatkov A.R.\n" + f"{Fore.RED}telegram: @andrpocc\n" + "vk: andrpocc\n")
+    print("All rights reserved by Pochatkov A.R.\n")
+    print(f"{Fore.RED}telegram: @andrpocc\n" + "vk: andrpocc\n")
 
 
 def input_path_to_excel() -> str:
@@ -21,7 +23,7 @@ def input_path_to_excel() -> str:
         f"{Fore.MAGENTA}Перенесите {Fore.RED}Excel{Fore.MAGENTA} файл в окно программы и нажмите клавишу ввода:\n{Fore.RED}{Style.BRIGHT}"
     )
     path_to_excel = input().replace('"', "")
-    print(f"\n{Fore.MAGENTA}PDF файлы будут сохранены по указанному выше пути!\n")
+    print(f"\n{Fore.MAGENTA}PDF файлы будут сохранены по указанному выше пути!\n\n{Fore.RED}Таблица из файла:\n")
     sleep(1)
     return path_to_excel
 
@@ -35,26 +37,30 @@ def main():
 
     table = read_excel_table(excel_file_path)
     print(table)
+    print(f"{Fore.MAGENTA}\nВведите номер группы:{Fore.RED}\n")
+    group = input("Введите номер группы: ")
+    print()
     broken = []
     for _, row in table.iterrows():
         name = str(row[1])
         mark = str(row[2])
-        context = {"name": name, "mark": mark}
+        context = {"name": name, "mark": mark, "group": group}
         print(f"{Fore.MAGENTA}Обрабатываю студента: {Fore.RED}{name}")
         try:
             process_user(context, save_path)
             print(f"{Fore.MAGENTA}Успешно!\n")
         except Exception:
+            print()
             print(traceback.format_exc())
             print(f"{Fore.MAGENTA}Возникла ошибка!\n")
             broken.append(name)
-            sleep(1)
+            input("Нажмите клавишу ввода, чтобы продолжить..")
     if broken:
         print(f"Следующие студенты не были обработаны из-за ошибки:{Fore.RED}")
         for name in broken:
             print(name)
     print(f"Все записи обработаны и сохранены по пути: {Fore.RED}{save_path}\n")
-    input("Для выхода нажмите клавишу ввода")
+    input("Нажмите клавишу ввода для выхода из программы..")
 
 
 if __name__ == "__main__":

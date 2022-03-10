@@ -2,8 +2,8 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Fast Practice"
-#define MyAppVersion "0.1.1"
-#define MyAppPublisher "GUZ"
+#define MyAppVersion "0.2.0"
+#define MyAppPublisher "@andrpocc"
 #define MyAppExeName "FP.exe"
 
 [Setup]
@@ -20,8 +20,8 @@ AllowNoIcons=yes
 LicenseFile=C:\programming\py\guz-practices-processing\LICENSE
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
-OutputDir=C:\Users\Andre\OneDrive\������� ����
-OutputBaseFilename=FP_INSTALL_0.1.1
+OutputDir=C:\Users\Andre\OneDrive\
+OutputBaseFilename=FP_INSTALL_0.2.0
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern

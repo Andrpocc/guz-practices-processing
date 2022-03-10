@@ -31,6 +31,11 @@ def _generate_pdf(number: int) -> None:
     _delete_file(in_path)
 
 
+def _clean_dir(file_dir: Path) -> None:
+    for file in os.listdir(file_dir):
+        os.remove(file_dir / file)
+
+
 def _delete_file(file_path: Union[str, Path]) -> None:
     os.remove(file_path)
 
@@ -59,6 +64,7 @@ def _connect_user_pdfs(context: dict, save_path: str) -> None:
 
 def process_user(contex: dict, save_path: str) -> None:
     template_names = ["performance", "certification", "referral", "report"]
+    _clean_dir(config.TEMP_PATH)
     for num, template in enumerate(template_names):
         _render_docx(template, contex, num)
         _generate_pdf(num)
