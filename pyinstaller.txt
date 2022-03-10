@@ -1,1 +1,1 @@
-pyinstaller -D --add-data "C:\programming\py\guz-practices-processing\venv\Lib\site-packages\pyfiglet;./pyfiglet" --name FP --icon ico.ico--version-file version.txt main.py
+pyinstaller -D --add-data "C:\programming\py\guz-practices-processing\venv\Lib\site-packages\pyfiglet;./pyfiglet" --name FP --icon ico.ico --version-file version.txt main.py

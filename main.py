@@ -1,4 +1,5 @@
 import os.path
+import traceback
 from time import sleep
 
 from colorama import init, Fore, Style
@@ -33,6 +34,7 @@ def main():
     save_path = os.path.split(excel_file_path)[0]
 
     table = read_excel_table(excel_file_path)
+    print(table)
     broken = []
     for _, row in table.iterrows():
         name = str(row[1])
@@ -43,6 +45,7 @@ def main():
             process_user(context, save_path)
             print(f"{Fore.MAGENTA}Успешно!\n")
         except Exception:
+            print(traceback.format_exc())
             print(f"{Fore.MAGENTA}Возникла ошибка!\n")
             broken.append(name)
             sleep(1)
